@@ -5,9 +5,6 @@
 
 #pragma once
 
-
-#pragma once
-
 #include "MainPage.g.h"
 
 namespace Image_Filtering_NEA
