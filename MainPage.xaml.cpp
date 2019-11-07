@@ -24,9 +24,6 @@ using namespace Windows::UI::Xaml::Navigation;
 using namespace Concurrency;
 
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
-
 
 
 Bitmap MainBitmap;
@@ -220,9 +217,7 @@ void MainPage::Undo(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs
 		x_OutputInfo->Text = "Ready.";
 	}
 	catch (Platform::COMException ^E)
-	{
-
-	}
+	{}
 }
 void MainPage::UndoAll(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e)
 {
@@ -274,9 +269,7 @@ void MainPage::UndoAll(Platform::Object^ sender, Windows::UI::Xaml::Input::Point
 		});
 	}
 	catch (Platform::COMException ^E)
-	{
-
-	}
+	{}
 }
 
 
@@ -288,25 +281,13 @@ void MainPage::UpdateTracker(Platform::Object^ sender, Windows::UI::Xaml::Input:
 		unsigned char blue = MainBitmap.RetrieveValue(pp->Position.X, pp->Position.Y, 0);
 		unsigned char green = MainBitmap.RetrieveValue(pp->Position.X, pp->Position.Y, 1);
 		unsigned char red = MainBitmap.RetrieveValue(pp->Position.X, pp->Position.Y, 2);
-		//std::string hex;
-		//char hex_string[7];
-		//std::sprintf(&hex_string[0], "%X", (int)red);
-		//std::sprintf(&hex_string[2], "%X", (int)blue);
-		//std::sprintf(&hex_string[4], "%X", (int)green);
-		//hex_string[6] = 0; //Null terminator
-		//hex = hex_string;
-		//Text_PixelColour->Text = hex;
-		//hex = "#" + hex;
 		Windows::UI::Color col;
 		col.A = 0xff;
 		col.B = (byte)blue;
 		col.G = (byte)green;
 		col.R = (byte)red;
 		x_RectPixelColour->Fill = ref new SolidColorBrush(col);
-
-		//x_OutputPixelColour->IsReadOnly = false;
 		x_OutputPixelColour->Text = ByteToHex(red, green, blue);
-		//x_OutputPixelColour->IsReadOnly = true;
 	}
 }
 void MainPage::ToggleTracking(Platform::Object^ sender, Windows::UI::Xaml::Input::KeyRoutedEventArgs^ e)
@@ -393,6 +374,7 @@ Platform::String^ MainPage::ByteToHex(int t)
 
 void Image_Filtering_NEA::MainPage::TextChanging_Gaussian(Windows::UI::Xaml::Controls::TextBox^ sender, Windows::UI::Xaml::Controls::TextBoxTextChangingEventArgs^ args)
 {
+	//Check we aren’t going to remove characters that aren’t there
 	if (x_InputGaussianSD->Text->Length() > 0)
 	{
 		char16 c = x_InputGaussianSD->Text->Data()[x_InputGaussianSD->SelectionStart - 1];
