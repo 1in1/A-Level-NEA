@@ -30,7 +30,6 @@ void Bitmap::Undo()
 	}
 }
 
-//jkjkj;jk;jk;ljj
 void Bitmap::Invert()
 {
 	//This is a simple inversion function that flips each pixel in place
