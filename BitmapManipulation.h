@@ -46,5 +46,4 @@ public:
 	void Greyscale();
 	void SobelFilter(int);
 	void ApproxHSVTransform(double, double, double);
-	//void SobelBlur();
 };
