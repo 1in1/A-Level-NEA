@@ -244,7 +244,7 @@ SoftwareBitmapSource^ Bitmap::GetSoftwareBitmapSource()
 
 		//We need to write to a buffer, and create a SoftwareBitmap from it
 		DataWriter^ writer = ref new DataWriter();
-		//THIS IS FUCKING SLOW, BUT I DON'T KNOW HOW TO PASS THE WHOLE C-STYLE BUFFER INTO WINDOWS' GAY NEW SHIT
+		//Slow, but I don't know how to pass the whole C-style buffer into this awful new Windows stuff
 		for (std::vector<unsigned char>::iterator i = PixelData[PixelStackHead].begin(); i < PixelData[PixelStackHead].end(); i += 1)
 		{
 			writer->WriteByte(*i);
